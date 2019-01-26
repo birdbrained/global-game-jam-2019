@@ -22,7 +22,8 @@ public class Enemy : Character
         {
             //play animation here
             print("He DIED");
-            Destroy(this);
+            //This is NOT how you get you should handle death. Use the queue system established by turn order!
+            //Destroy(this);
         }
         if (isSelectable)
         {
