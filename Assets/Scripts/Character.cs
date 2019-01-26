@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Character : MonoBehaviour
 {
+    public string characterName;
     public int maxHealth;
     public int currHealth;
     //public int damageToDeal;
