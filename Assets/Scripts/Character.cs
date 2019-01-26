@@ -14,6 +14,8 @@ public abstract class Character : MonoBehaviour
     public int defense;
     public int agility;
 
+    public bool defending;
+
     public bool IsDead
     {
         get

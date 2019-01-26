@@ -28,6 +28,10 @@ public class Player : Character
     public override void TakeDamage(int damageAmount)
     {
         int damageTaken = CombatManager.Instance.CalculateDamageAmount(damageAmount, defense);
+        if (defending)
+        {
+            damageTaken=damageTaken / 2;
+        }
         if (damageTaken <= 0)
         {
             damageTaken = 1;
