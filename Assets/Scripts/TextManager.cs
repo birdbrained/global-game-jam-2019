@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UI;   
 
 public class TextManager : MonoBehaviour
 {
@@ -16,7 +17,17 @@ public class TextManager : MonoBehaviour
 
     public void LoadFromFile(string file)
     {
-
+        if(!File.Exists(Application.dataPath + "/" +  file))
+        {
+            Debug.Log("File not found" + Application.dataPath + "/" + file);
+            return;
+        }
+        string[] lines = File.ReadAllLines(file);
+        for(int i = 0; i < lines.Length; i++)
+        {
+            QueueText(lines[i]);
+        }
+        DequeueText();
     }
 
     public void ToggleText()
@@ -41,11 +52,17 @@ public class TextManager : MonoBehaviour
             currentString = "";
         }
         currentString = stringQueue.Dequeue();
+        currentShowString = "";
     }
 
     public void SkipTextTime()
     {
         currentShowString = currentString;
+    }
+
+    public bool isQueueEmpty()
+    {
+        return (stringQueue.Count == 0);
     }
 
     // Start is called before the first frame update
