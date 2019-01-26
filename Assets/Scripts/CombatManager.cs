@@ -21,6 +21,7 @@ public class CombatManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
     }
 
     // Update is called once per frame
@@ -39,8 +40,8 @@ public class CombatManager : MonoBehaviour
             damage25percent *= -1;
         }
        
-            return baseDamage + damage25percent;
-        }
+        return baseDamage + damage25percent;
+    }
         
     public bool Defend(bool defending)
     {
@@ -104,6 +105,17 @@ public class CombatManager : MonoBehaviour
         }
 
         return (int)(((baseDamage + damage25percent)*1.5f));
+    }
+
+    //test function for ui selection
+    public void HighlightAllEnemies()
+    {
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        foreach (Enemy enemy in enemies)
+        {
+            //enemy.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+            enemy.isSelectable = true;
+        }
     }
    
 }
