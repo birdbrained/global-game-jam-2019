@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    public string characterName;
-    public int maxHealth;
-    public int currHealth;
-    public int attack;
-    public int defense;
-    public int agility;
+    
     public bool isSelectable;
     public bool wasImagined;
     public bool wasAttacked;
@@ -28,7 +23,8 @@ public class Enemy : Character
         {
             //play animation here
             print("He DIED");
-            Destroy(this);
+            //This is NOT how you get you should handle death. Use the queue system established by turn order!
+            //Destroy(this);
         }
         if (isSelectable)
         {
@@ -60,11 +56,5 @@ public class Enemy : Character
         currHealth -= damageAmount;
         //check if dead
     }
-    public bool IsDead
-    {
-        get
-        {
-            return currHealth <= 0;
-        }
-    }
+    
 }
