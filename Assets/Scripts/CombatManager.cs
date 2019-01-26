@@ -63,9 +63,9 @@ public class CombatManager : MonoBehaviour
     {
         return true;
     }
-    public bool requiredMP(int mpcost, int charmp)
+    public bool requiredIP(int ipcost, int charmp)
     {
-        if (mpcost - charmp < 0)
+        if (ipcost - charmp < 0)
             return true;
         else
         {
@@ -74,8 +74,8 @@ public class CombatManager : MonoBehaviour
     }
     public int KnuckleSandwich(int attackersAttack, int defendersDefense,Random rnd, GameObject User)
     {
-        int mpcost = 10;
-        User.GetComponent<Character>().currMP -= mpcost;
+        int ipcost = 10;
+        User.GetComponent<Character>().currIP -= ipcost;
         int baseDamage = (2 * attackersAttack - defendersDefense);
         int damage25percent = (int)(baseDamage * 0.25f) + Random.Range(1, attackersAttack);
         if (Random.value < 0.5f)
@@ -86,8 +86,8 @@ public class CombatManager : MonoBehaviour
     }
     public int RoughHousing(int attackersAttack, int defendersDefense, Random rnd, GameObject User)
     {
-        int mpcost = 5;
-        User.GetComponent<Character>().currMP -= mpcost;
+        int ipcost = 5;
+        User.GetComponent<Character>().currIP -= ipcost;
         int baseDamage = (2 * attackersAttack - defendersDefense);
         int damage25percent = (int)(baseDamage * 0.25f);
         if (Random.value < 0.5f)
@@ -98,16 +98,16 @@ public class CombatManager : MonoBehaviour
     }
     public int Recover(int totalhealth, GameObject User)
     {
-        int mpcost = 20;
-        User.GetComponent<Character>().currMP -= mpcost;
+        int ipcost = 20;
+        User.GetComponent<Character>().currIP -= ipcost;
         int Randompercent = Random.Range(10, 25);
         int healamount = (int)(totalhealth * ((Randompercent)/100f));
         return healamount;
     }
     public int Fireball(int attackersAttack, int defendersDefense, GameObject User)
     {
-        int mpcost = 20;
-        User.GetComponent<Character>().currMP -= mpcost;
+        int ipcost = 20;
+        User.GetComponent<Character>().currIP -= ipcost;
         int baseDamage = 2 * attackersAttack - defendersDefense;
         int damage25percent = (int)(baseDamage * 0.25f);
         if (Random.value < 0.5f)
@@ -119,14 +119,14 @@ public class CombatManager : MonoBehaviour
     }
     public void Protect(GameObject Target, GameObject User)
     {
-        int mpcost = 5;
-        User.GetComponent<Character>().currMP -= mpcost;
+        int ipcost = 5;
+        User.GetComponent<Character>().currIP -= ipcost;
         Target.GetComponent<Character>().defending = true;
     }
     public int Wallop(int attackersAttack, int defendersDefense, GameObject User)
     {
-        int mpcost = 10;
-        User.GetComponent<Character>().currMP -= mpcost;
+        int ipcost = 10;
+        User.GetComponent<Character>().currIP -= ipcost;
         int baseDamage = 2 * attackersAttack - defendersDefense;
         int damage25percent = (int)(baseDamage * 0.25f);
         if (Random.value < 0.5f)

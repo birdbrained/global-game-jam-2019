@@ -12,8 +12,11 @@ public class Player : Character
     // Start is called before the first frame update
     void Start()
     {
-        characterNameText.text = characterName;
-        
+        if (characterNameText != null)
+        {
+            characterNameText.text = characterName;
+        }
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame
