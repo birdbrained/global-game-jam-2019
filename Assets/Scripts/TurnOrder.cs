@@ -41,8 +41,10 @@ public class TurnOrder : MonoBehaviour
                 Order.Enqueue(currentturn);
             }
             else {
+                //acted refers to an animation, set to true when animation is finished
                 while (acted != true)
                 {
+                    //wait for animation to finish
                 }
                 Order.Enqueue(currentturn);
                 acted = false;
@@ -114,13 +116,14 @@ public class TurnOrder : MonoBehaviour
             allentities.Add(enemy);
         }
         Debug.Log("Did is this the issue?: Characters");
-
-        //characters.CopyTo(allentities, 0);
-
-        //enemies.CopyTo(allentities, characters.Length);
-
         return allentities;
     }
+    
+    public void ActedFinished()
+    {
+        acted = true;
+    }
+
     private Queue<GameObject> charOrder(List<GameObject> allentities)
     {
         int fastest=0;

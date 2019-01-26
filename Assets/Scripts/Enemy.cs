@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    
     public bool isSelectable;
     public bool wasImagined;
     public bool wasAttacked;
@@ -56,5 +55,4 @@ public class Enemy : Character
         currHealth -= damageAmount;
         //check if dead
     }
-    
 }
