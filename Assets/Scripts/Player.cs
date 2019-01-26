@@ -8,7 +8,6 @@ public class Player : Character
     public int damageToDeal;
     [SerializeField]
     private Text characterNameText;
-    public string characterName;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +27,11 @@ public class Player : Character
 
     public override void TakeDamage(int damageAmount)
     {
-        damageToDeal += CombatManager.Instance.CalculateDamageAmount(damageAmount, defense);
+        int damageTaken = CombatManager.Instance.CalculateDamageAmount(damageAmount, defense);
+        if (damageTaken <= 0)
+        {
+            damageTaken = 1;
+        }
+        damageToDeal += damageTaken;
     }
 }

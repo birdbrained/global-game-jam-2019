@@ -14,5 +14,13 @@ public abstract class Character : MonoBehaviour
     public int defense;
     public int agility;
 
+    public bool IsDead
+    {
+        get
+        {
+            return currHealth <= 0;
+        }
+    }
+
     public abstract void TakeDamage(int damageAmount);
 }
