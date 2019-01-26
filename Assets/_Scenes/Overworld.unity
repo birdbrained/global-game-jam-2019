@@ -254,8 +254,8 @@ MonoBehaviour:
   characterName: 
   maxHealth: 0
   currHealth: 0
-  maxMP: 0
-  currMP: 0
+  maxIP: 0
+  currIP: 0
   attack: 0
   defense: 0
   agility: 0
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 219975586}
   - component: {fileID: 219975588}
   m_Layer: 8
-  m_Name: player
+  m_Name: guy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -460,7 +460,7 @@ Transform:
   m_GameObject: {fileID: 219975585}
   m_LocalRotation: {x: 0.10062042, y: -0, z: -0, w: 0.9949249}
   m_LocalPosition: {x: 0, y: 0.02, z: 0.23}
-  m_LocalScale: {x: 0.37, y: 0.37, z: 0.37}
+  m_LocalScale: {x: 0.37, y: 0.37, z: 1}
   m_Children: []
   m_Father: {fileID: 532272447}
   m_RootOrder: 0
@@ -836,6 +836,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 2066147157}
   numFrames: 25
+  ani: {fileID: 1577002493}
+  mainCharacter: {fileID: 532272444}
 --- !u!54 &549062053
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -863,7 +865,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.24, y: 3.04, z: 0.63}
+  m_Size: {x: 2.24, y: 3.35, z: 0.63}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &549062055
 Transform:
@@ -873,7 +875,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 549062051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.56, z: 0}
+  m_LocalPosition: {x: 0, y: 1.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1577002491}
@@ -1144,8 +1146,8 @@ MonoBehaviour:
   characterName: 
   maxHealth: 0
   currHealth: 0
-  maxMP: 0
-  currMP: 0
+  maxIP: 0
+  currIP: 0
   attack: 0
   defense: 0
   agility: 0
@@ -1198,8 +1200,8 @@ MonoBehaviour:
   characterName: 
   maxHealth: 0
   currHealth: 0
-  maxMP: 0
-  currMP: 0
+  maxIP: 0
+  currIP: 0
   attack: 0
   defense: 0
   agility: 0
@@ -1814,8 +1816,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1577002491}
   - component: {fileID: 1577002492}
+  - component: {fileID: 1577002493}
   m_Layer: 8
-  m_Name: player
+  m_Name: guy3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1830,7 +1833,7 @@ Transform:
   m_GameObject: {fileID: 1577002490}
   m_LocalRotation: {x: 0.10062042, y: -0, z: -0, w: 0.9949249}
   m_LocalPosition: {x: 0, y: 0, z: 0.23}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.37, y: 0.37, z: 1}
   m_Children: []
   m_Father: {fileID: 549062055}
   m_RootOrder: 0
@@ -1872,8 +1875,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4e46efaa874a75f4ab6d1c2e11378d44, type: 3}
-  m_Color: {r: 0, g: 0.21977177, b: 0.8679245, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 70c5cf5ed03cc2f4581cffcfd171c161, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1883,6 +1886,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1577002493
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577002490}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e59d8ccac4f4a3b4191e007bf7a496ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1794128046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,8 +1915,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1794128047}
   - component: {fileID: 1794128048}
+  - component: {fileID: 1794128049}
   m_Layer: 8
-  m_Name: player
+  m_Name: guy 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1908,8 +1931,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794128046}
   m_LocalRotation: {x: 0.10062042, y: -0, z: -0, w: 0.9949249}
-  m_LocalPosition: {x: 0, y: 0, z: 0.23}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.21, y: 0, z: 0.23}
+  m_LocalScale: {x: 0.37, y: 0.37, z: 1}
   m_Children: []
   m_Father: {fileID: 2066147159}
   m_RootOrder: 0
@@ -1951,8 +1974,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4e46efaa874a75f4ab6d1c2e11378d44, type: 3}
-  m_Color: {r: 0.4433962, g: 0.13594696, b: 0.13594696, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 7e67ad0339667bb45b5c09688f430d6f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1962,6 +1985,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1794128049
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794128046}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d2f6e6ee57b597541995eaba14f30390, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &2044463382
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2216,6 +2258,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 532272445}
   numFrames: 25
+  ani: {fileID: 1794128049}
+  mainCharacter: {fileID: 532272444}
 --- !u!54 &2066147157
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2243,7 +2287,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.24, y: 3.04, z: 0.63}
+  m_Size: {x: 2.24, y: 3.35, z: 0.63}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &2066147159
 Transform:
@@ -2253,7 +2297,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2066147155}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.56, z: 0}
+  m_LocalPosition: {x: 2021, y: 1.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1794128047}

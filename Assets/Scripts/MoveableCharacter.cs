@@ -10,6 +10,8 @@ public class MoveableCharacter : MonoBehaviour
     private bool facingRight;
     [SerializeField]
     private Animator ani;
+    public float MoveHor { get; private set; }
+    public float MoveVer { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -21,16 +23,16 @@ public class MoveableCharacter : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        float moveHor = Input.GetAxis("Horizontal");
-        float moveVer = Input.GetAxis("Vertical");
+        MoveHor = Input.GetAxis("Horizontal");
+        MoveVer = Input.GetAxis("Vertical");
 
         if (ani != null)
         {
-            HandleAnimations(moveHor, moveVer);
+            HandleAnimations(MoveHor, MoveVer);
         }
 
-        rb.velocity = new Vector3(moveHor * speed, rb.velocity.y, moveVer * speed);
-        ChangeDirection(moveHor);
+        rb.velocity = new Vector3(MoveHor * speed, rb.velocity.y, MoveVer * speed);
+        ChangeDirection(MoveHor);
     }
 
     private void HandleAnimations(float hor, float ver)

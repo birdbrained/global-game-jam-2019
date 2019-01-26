@@ -38,8 +38,10 @@ public class TurnOrder : MonoBehaviour
                 Order.Enqueue(currentturn);
             }
             else {
+                //acted refers to an animation, set to true when animation is finished
                 while (acted != true)
                 {
+                    //wait for animation to finish
                 }
                 Order.Enqueue(currentturn);
                 acted = false;
@@ -58,6 +60,10 @@ public class TurnOrder : MonoBehaviour
         
     }
 
+    public void ActedFinished()
+    {
+        acted = true;
+    }
 
     private GameObject[] chargrab()
     {
