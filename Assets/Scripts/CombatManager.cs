@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
 {
+    //IF DOING TURN ORDER, PULL FROM GIT HUB TO UPDATE THE SCRIPTS!!!!
     GameObject currentchar;
+    public bool isAttacking;
     private static CombatManager instance;
     public static CombatManager Instance
     {
@@ -17,17 +20,30 @@ public class CombatManager : MonoBehaviour
             return instance;
         }
     }
+    public Text logText;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //Should grab and instnatiate the characters in party
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Should handle switching characters
+        //Should check the status of characters
+
+        //Checks if the player is currently not in the attacking stage
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        if (this.isAttacking == false)
+        {
+            foreach (Enemy enemy in enemies)
+            {
+                //enemy.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                enemy.isSelectable = false;
+            }
+        }
     }
 
     public int CalculateDamageAmount(int attackersAttack, int defendersDefense)
@@ -116,6 +132,12 @@ public class CombatManager : MonoBehaviour
             //enemy.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
             enemy.isSelectable = true;
         }
+        this.isAttacking = true;
+    }
+
+    public void EnableObject(GameObject obj)
+    {
+        obj.SetActive(true);
     }
    
 }

@@ -13,11 +13,13 @@ public class Player : Character
     void Start()
     {
         characterNameText.text = characterName;
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (damageToDeal > 0)
         {
             currHealth--;
