@@ -8,8 +8,8 @@ public abstract class Character : MonoBehaviour
     public int maxHealth;
     public int currHealth;
     //public int damageToDeal;
-    public int maxMP;
-    public int currMP;
+    public int maxIP;
+    public int currIP;
     public int attack;
     public int defense;
     public int agility;

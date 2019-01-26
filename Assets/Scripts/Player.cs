@@ -22,6 +22,7 @@ public class Player : Character
     // Update is called once per frame
     void FixedUpdate()
     {
+        
         if (damageToDeal > 0)
         {
             currHealth--;

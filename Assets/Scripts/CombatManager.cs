@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CombatManager : MonoBehaviour
 {
+    //IF DOING TURN ORDER, PULL FROM GIT HUB TO UPDATE THE SCRIPTS!!!!
     GameObject currentchar;
+    public bool isAttacking;
     private static CombatManager instance;
     public static CombatManager Instance
     {
@@ -17,17 +20,30 @@ public class CombatManager : MonoBehaviour
             return instance;
         }
     }
+    public Text logText;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        //Should grab and instnatiate the characters in party
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Should handle switching characters
+        //Should check the status of characters
+
+        //Checks if the player is currently not in the attacking stage
+        Enemy[] enemies = FindObjectsOfType<Enemy>();
+        if (this.isAttacking == false)
+        {
+            foreach (Enemy enemy in enemies)
+            {
+                //enemy.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
+                enemy.isSelectable = false;
+            }
+        }
     }
 
     public int CalculateDamageAmount(int attackersAttack, int defendersDefense)
@@ -47,21 +63,31 @@ public class CombatManager : MonoBehaviour
     {
         return true;
     }
-
+    public bool requiredIP(int ipcost, int charmp)
+    {
+        if (ipcost - charmp < 0)
+            return true;
+        else
+        {
+            return false;
+        }
+    }
     public int KnuckleSandwich(int attackersAttack, int defendersDefense,Random rnd, GameObject User)
     {
+        int ipcost = 10;
+        User.GetComponent<Character>().currIP -= ipcost;
         int baseDamage = (2 * attackersAttack - defendersDefense);
         int damage25percent = (int)(baseDamage * 0.25f) + Random.Range(1, attackersAttack);
         if (Random.value < 0.5f)
         {
             damage25percent *= -1;
-            User.GetComponent<Character>().currMP -= 10;
         }
         return baseDamage + damage25percent;
     }
     public int RoughHousing(int attackersAttack, int defendersDefense, Random rnd, GameObject User)
     {
-        User.GetComponent<Character>().currMP -= 5;
+        int ipcost = 5;
+        User.GetComponent<Character>().currIP -= ipcost;
         int baseDamage = (2 * attackersAttack - defendersDefense);
         int damage25percent = (int)(baseDamage * 0.25f);
         if (Random.value < 0.5f)
@@ -72,14 +98,16 @@ public class CombatManager : MonoBehaviour
     }
     public int Recover(int totalhealth, GameObject User)
     {
-        User.GetComponent<Character>().currMP -= 20;
+        int ipcost = 20;
+        User.GetComponent<Character>().currIP -= ipcost;
         int Randompercent = Random.Range(10, 25);
         int healamount = (int)(totalhealth * ((Randompercent)/100f));
         return healamount;
     }
     public int Fireball(int attackersAttack, int defendersDefense, GameObject User)
     {
-        User.GetComponent<Character>().currMP -= 20;
+        int ipcost = 20;
+        User.GetComponent<Character>().currIP -= ipcost;
         int baseDamage = 2 * attackersAttack - defendersDefense;
         int damage25percent = (int)(baseDamage * 0.25f);
         if (Random.value < 0.5f)
@@ -91,12 +119,14 @@ public class CombatManager : MonoBehaviour
     }
     public void Protect(GameObject Target, GameObject User)
     {
+        int ipcost = 5;
+        User.GetComponent<Character>().currIP -= ipcost;
         Target.GetComponent<Character>().defending = true;
-        User.GetComponent<Character>().currMP -= 5;
     }
     public int Wallop(int attackersAttack, int defendersDefense, GameObject User)
     {
-        User.GetComponent<Character>().currMP -= 10;
+        int ipcost = 10;
+        User.GetComponent<Character>().currIP -= ipcost;
         int baseDamage = 2 * attackersAttack - defendersDefense;
         int damage25percent = (int)(baseDamage * 0.25f);
         if (Random.value < 0.5f)
@@ -116,6 +146,12 @@ public class CombatManager : MonoBehaviour
             //enemy.gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
             enemy.isSelectable = true;
         }
+        this.isAttacking = true;
+    }
+
+    public void EnableObject(GameObject obj)
+    {
+        obj.SetActive(true);
     }
    
 }

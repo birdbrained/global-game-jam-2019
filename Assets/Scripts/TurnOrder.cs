@@ -15,10 +15,14 @@ public class TurnOrder : MonoBehaviour
     private int livefriend;
     private int liveenemy;
     private static int count;
+    public bool win;
     private bool acted;
+    
     private void Start()
     {
+        //Takes all characters and enemies on the screen
         allentities = chargrab();
+        //Assembles a queue for the order in combat
         Order = charOrder(allentities);
         livefriend = counttag("Character", allentities, count);
         liveenemy = counttag("Enemy", allentities, count);
@@ -29,7 +33,7 @@ public class TurnOrder : MonoBehaviour
             {
                 currentturn.GetComponent<Character>().defending = false;
             }
-            if (currentturn.GetComponent<Character>().IsDead == true)
+            if ((currentturn.GetComponent<Character>().IsDead == true)&&(currentturn.tag=="Character"))
             {
                 Order.Enqueue(currentturn);
             }
@@ -43,6 +47,14 @@ public class TurnOrder : MonoBehaviour
                 liveenemy = counttag("Enemy", allentities, count);
             }
         }
+        if (livefriend==0)
+        {
+            win = false;
+        }
+        else if (liveenemy == 0)
+        {
+            win = true;
+        }
         
     }
 
@@ -52,7 +64,7 @@ public class TurnOrder : MonoBehaviour
         characters = GameObject.FindGameObjectsWithTag("Character");
         enemies= GameObject.FindGameObjectsWithTag("Enemy");
         characters.CopyTo(allentities, 0);
-        enemies.CopyTo(allentities, enemies.Length);
+        enemies.CopyTo(allentities, characters.Length);
        
         return allentities;
     }
