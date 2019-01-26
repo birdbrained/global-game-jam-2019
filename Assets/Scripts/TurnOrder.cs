@@ -25,9 +25,19 @@ public class TurnOrder : MonoBehaviour
         while ((livefriend > 0) && (liveenemy > 0))
         {
             currentturn = Order.Dequeue();
-            
-            Order.Enqueue(currentturn);
-            acted = false;
+            if (currentturn.GetComponent<Character>().IsDead == true)
+            {
+                Order.Enqueue(currentturn);
+            }
+            else {
+                while (acted != true)
+                {
+                }
+                Order.Enqueue(currentturn);
+                acted = false;
+                livefriend = counttag("Character", allentities, count);
+                liveenemy = counttag("Enemy", allentities, count);
+            }
         }
         
     }
