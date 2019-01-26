@@ -50,6 +50,7 @@ public class TextManager : MonoBehaviour
         if(stringQueue.Count == 0)
         {
             currentString = "";
+            return;
         }
         currentString = stringQueue.Dequeue();
         currentShowString = "";
