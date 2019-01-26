@@ -1,0 +1,69 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class TextManager : MonoBehaviour
+{
+    public GameObject TextBox;
+    public GameObject Text;
+    public float textSpeed;
+
+    Queue<string> stringQueue = new Queue<string>();
+    string currentString = "";
+    string currentShowString = "";
+    float lastUpdate;
+
+
+    public void ToggleText()
+    {
+        TextBox.SetActive(!TextBox.activeSelf);
+        Text.SetActive(!Text.activeSelf);
+        lastUpdate = Time.time;
+    }
+
+    /**
+     * @breif Queue the text onto the string Queue. Does not show the string automatically, Dequeue Text needs to be called for that
+     */
+    public void QueueText(string text)
+    {
+        stringQueue.Enqueue(text);
+    }
+
+    public void DequeueText()
+    {
+        if(stringQueue.Count == 0)
+        {
+            currentString = "";
+        }
+        currentString = stringQueue.Dequeue();
+    }
+
+    public void SkipTextTime()
+    {
+        currentShowString = currentString;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(currentString != "")
+        {
+            if(lastUpdate + textSpeed < Time.time)
+            {
+                if(currentShowString.Length != currentString.Length)
+                {
+                    currentShowString = currentShowString + currentString[currentShowString.Length];
+                    lastUpdate = Time.time;
+                }
+            }
+            Text.GetComponent<Text>().text = currentShowString;
+        }
+    }
+}
