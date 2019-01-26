@@ -17,12 +17,15 @@ public class TextManager : MonoBehaviour
 
     public void LoadFromFile(string file)
     {
-        if(!File.Exists(Application.dataPath + "/" +  file))
+        /*if(!File.Exists(Application.dataPath + "/" +  file))
         {
             Debug.Log("File not found" + Application.dataPath + "/" + file);
             return;
-        }
-        string[] lines = File.ReadAllLines(file);
+        }*/
+        //string[] lines = File.ReadAllLines(file);
+        StreamReader reader = new StreamReader("Assets/Text/SampleText.txt");
+        string content = reader.ReadToEnd();
+        string[] lines = content.Split('\n');
         for(int i = 0; i < lines.Length; i++)
         {
             QueueText(lines[i]);
