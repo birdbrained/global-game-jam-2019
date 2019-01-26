@@ -14,6 +14,10 @@ public class TextManager : MonoBehaviour
     string currentShowString = "";
     float lastUpdate;
 
+    public void LoadFromFile(string file)
+    {
+
+    }
 
     public void ToggleText()
     {
