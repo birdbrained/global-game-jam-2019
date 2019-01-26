@@ -36,7 +36,7 @@ public class Enemy : Character
     }
     void OnMouseDown()
     {
-        Debug.Log("The mouse is down!");
+        //Debug.Log("The mouse is down!");
         if (isSelectable)
         {
             //check if the attack was an imagined one or a normal one!

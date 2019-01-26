@@ -158,8 +158,11 @@ public class CombatManager : MonoBehaviour
             combatMenu.SetActive(true);
             newMenu.SetActive(false);
         }
-        oldMenu.SetActive(false);
-        newMenu.SetActive(true);
+        else {
+            oldMenu.SetActive(false);
+            newMenu.SetActive(true);
+        }
+        
         
     }
     public void EnableObject(GameObject obj)

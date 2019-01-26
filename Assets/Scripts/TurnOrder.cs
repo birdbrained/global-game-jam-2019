@@ -141,7 +141,7 @@ public class TurnOrder : MonoBehaviour
             //Debug.Log(shredlist.Count);
             foreach (GameObject i in shredlist)
             {
-                Debug.Log(i.name + " " + i.GetComponent<Character>().agility + " " + fastest);
+                //Debug.Log(i.name + " " + i.GetComponent<Character>().agility + " " + fastest);
                 if (i.GetComponent<Character>().agility > fastest)
                 {
                    // Debug.Log("its faster");
