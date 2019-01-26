@@ -47,21 +47,31 @@ public class CombatManager : MonoBehaviour
     {
         return true;
     }
-
+    public bool requiredMP(int mpcost, int charmp)
+    {
+        if (mpcost - charmp < 0)
+            return true;
+        else
+        {
+            return false;
+        }
+    }
     public int KnuckleSandwich(int attackersAttack, int defendersDefense,Random rnd, GameObject User)
     {
+        int mpcost = 10;
+        User.GetComponent<Character>().currMP -= mpcost;
         int baseDamage = (2 * attackersAttack - defendersDefense);
         int damage25percent = (int)(baseDamage * 0.25f) + Random.Range(1, attackersAttack);
         if (Random.value < 0.5f)
         {
             damage25percent *= -1;
-            User.GetComponent<Character>().currMP -= 10;
         }
         return baseDamage + damage25percent;
     }
     public int RoughHousing(int attackersAttack, int defendersDefense, Random rnd, GameObject User)
     {
-        User.GetComponent<Character>().currMP -= 5;
+        int mpcost = 5;
+        User.GetComponent<Character>().currMP -= mpcost;
         int baseDamage = (2 * attackersAttack - defendersDefense);
         int damage25percent = (int)(baseDamage * 0.25f);
         if (Random.value < 0.5f)
@@ -72,14 +82,16 @@ public class CombatManager : MonoBehaviour
     }
     public int Recover(int totalhealth, GameObject User)
     {
-        User.GetComponent<Character>().currMP -= 20;
+        int mpcost = 20;
+        User.GetComponent<Character>().currMP -= mpcost;
         int Randompercent = Random.Range(10, 25);
         int healamount = (int)(totalhealth * ((Randompercent)/100f));
         return healamount;
     }
     public int Fireball(int attackersAttack, int defendersDefense, GameObject User)
     {
-        User.GetComponent<Character>().currMP -= 20;
+        int mpcost = 20;
+        User.GetComponent<Character>().currMP -= mpcost;
         int baseDamage = 2 * attackersAttack - defendersDefense;
         int damage25percent = (int)(baseDamage * 0.25f);
         if (Random.value < 0.5f)
@@ -91,12 +103,14 @@ public class CombatManager : MonoBehaviour
     }
     public void Protect(GameObject Target, GameObject User)
     {
+        int mpcost = 5;
+        User.GetComponent<Character>().currMP -= mpcost;
         Target.GetComponent<Character>().defending = true;
-        User.GetComponent<Character>().currMP -= 5;
     }
     public int Wallop(int attackersAttack, int defendersDefense, GameObject User)
     {
-        User.GetComponent<Character>().currMP -= 10;
+        int mpcost = 10;
+        User.GetComponent<Character>().currMP -= mpcost;
         int baseDamage = 2 * attackersAttack - defendersDefense;
         int damage25percent = (int)(baseDamage * 0.25f);
         if (Random.value < 0.5f)

@@ -20,7 +20,9 @@ public class TurnOrder : MonoBehaviour
     
     private void Start()
     {
+        //Takes all characters and enemies on the screen
         allentities = chargrab();
+        //Assembles a queue for the order in combat
         Order = charOrder(allentities);
         livefriend = counttag("Character", allentities, count);
         liveenemy = counttag("Enemy", allentities, count);
@@ -31,7 +33,7 @@ public class TurnOrder : MonoBehaviour
             {
                 currentturn.GetComponent<Character>().defending = false;
             }
-            if (currentturn.GetComponent<Character>().IsDead == true)
+            if ((currentturn.GetComponent<Character>().IsDead == true)&&(currentturn.tag=="Character"))
             {
                 Order.Enqueue(currentturn);
             }
