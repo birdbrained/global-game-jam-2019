@@ -6,9 +6,24 @@ using UnityEngine.UI;
 
 public class TextManager : MonoBehaviour
 {
+    private static TextManager instance;
+    public static TextManager Instance
+    {
+        get
+        {
+            if (instance == null)
+            {
+                instance = FindObjectOfType<TextManager>();
+            }
+            return instance;
+        }
+    }
+
     public GameObject TextBox;
     public GameObject Text;
     public float textSpeed;
+    [SerializeField]
+    private MoveableCharacter player;
 
     Queue<string> stringQueue = new Queue<string>();
     string currentString = "";
@@ -17,13 +32,14 @@ public class TextManager : MonoBehaviour
 
     public void LoadFromFile(string file)
     {
+        Debug.Log("File time");
         /*if(!File.Exists(Application.dataPath + "/" +  file))
         {
             Debug.Log("File not found" + Application.dataPath + "/" + file);
             return;
         }*/
         //string[] lines = File.ReadAllLines(file);
-        StreamReader reader = new StreamReader("Assets/Text/SampleText.txt");
+        StreamReader reader = new StreamReader(file);
         string content = reader.ReadToEnd();
         string[] lines = content.Split('\n');
         for (int i = 0; i < lines.Length; i++)
@@ -53,6 +69,9 @@ public class TextManager : MonoBehaviour
         if (stringQueue.Count == 0)
         {
             currentString = "";
+            Debug.Log("all done with text");
+            player.enabled = true;
+            TextBox.SetActive(false);
             return;
         }
         currentString = stringQueue.Dequeue();
@@ -67,6 +86,11 @@ public class TextManager : MonoBehaviour
     public bool isQueueEmpty()
     {
         return (stringQueue.Count == 0);
+    }
+
+    public void EnableTextBox()
+    {
+        TextBox.SetActive(true);
     }
 
     // Start is called before the first frame update

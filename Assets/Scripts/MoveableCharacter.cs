@@ -43,6 +43,8 @@ public class MoveableCharacter : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 Debug.Log("Talk!");
+                inter.QueueTextBox();
+                gameObject.GetComponent<MoveableCharacter>().enabled = false;
             }
         }
     }
