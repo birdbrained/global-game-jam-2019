@@ -41,7 +41,8 @@ public class InteractableObject : MonoBehaviour
 
     public void QueueTextBox()
     {
-        TextManager.Instance.EnableTextBox();
+        //TextManager.Instance.EnableTextBox();
+        TextManager.Instance.ToggleText();
         TextManager.Instance.LoadFromFile(dialogueFile);
     }
 }

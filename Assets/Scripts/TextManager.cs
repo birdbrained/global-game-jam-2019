@@ -41,6 +41,7 @@ public class TextManager : MonoBehaviour
         //string[] lines = File.ReadAllLines(file);
         StreamReader reader = new StreamReader(file);
         string content = reader.ReadToEnd();
+        reader.Close();
         string[] lines = content.Split('\n');
         for (int i = 0; i < lines.Length; i++)
         {
@@ -52,7 +53,7 @@ public class TextManager : MonoBehaviour
     public void ToggleText()
     {
         TextBox.SetActive(!TextBox.activeSelf);
-        Text.SetActive(!Text.activeSelf);
+        //Text.SetActive(!Text.activeSelf);
         lastUpdate = Time.time;
     }
 
@@ -71,7 +72,8 @@ public class TextManager : MonoBehaviour
             currentString = "";
             Debug.Log("all done with text");
             player.enabled = true;
-            TextBox.SetActive(false);
+            //TextBox.SetActive(false);
+            ToggleText();
             return;
         }
         currentString = stringQueue.Dequeue();
