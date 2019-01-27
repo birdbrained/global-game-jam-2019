@@ -31,4 +31,12 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+    public string FormatAttackQuip(int damage, string characterName, string baseQuip)
+    {
+        string quip = baseQuip;
+        quip = quip.Replace("<1>", damage.ToString());
+        quip = quip.Replace("<2>", characterName);
+        return quip;
+    }
 }

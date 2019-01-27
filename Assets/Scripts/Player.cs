@@ -95,6 +95,25 @@ public class Player : Character
     {
         Debug.Log("TakeDamage: " + damageAmount.ToString());
         int damageTaken = CombatManager.Instance.CalculateDamageAmount(damageAmount, defense);
+
+        if (defending)
+        {
+            damageTaken = damageTaken / 2;
+        }
+        if (damageTaken <= 0)
+        {
+            damageTaken = 1;
+        }
+
+        CombatManager.Instance.logText.text = characterName + " took " + damageTaken.ToString() + " damage!";
+        damageToDeal += damageTaken;
+        Debug.Log("Damage to deal: " + damageToDeal.ToString());
+    }
+
+    public void TakeDamage(int damageAmount, string quip)
+    {
+        Debug.Log("TakeDamage: " + damageAmount.ToString());
+        int damageTaken = CombatManager.Instance.CalculateDamageAmount(damageAmount, defense);
         
         if (defending)
         {
@@ -105,7 +124,7 @@ public class Player : Character
             damageTaken = 1;
         }
 
-        CombatManager.Instance.logText.text = characterName + " took " + damageTaken.ToString() + " damage!";
+        CombatManager.Instance.logText.text = GameManager.Instance.FormatAttackQuip(damageTaken, characterName, quip);
         damageToDeal += damageTaken;
         Debug.Log("Damage to deal: " + damageToDeal.ToString());
     }

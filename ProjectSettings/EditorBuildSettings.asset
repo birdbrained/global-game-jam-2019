@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/DonoBattleTest.unity
     guid: 0c428b7656b0fd940aafd0806bda0917
+  - enabled: 1
+    path: Assets/_Scenes/BirdBattle.unity
+    guid: d210ff1baa4f793429dac288df71792e
   m_configObjects: {}

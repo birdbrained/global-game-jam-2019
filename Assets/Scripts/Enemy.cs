@@ -14,6 +14,9 @@ public class Enemy : Character
     private ParticleSystem deathPS1;
     [SerializeField]
     private ParticleSystem deathPS2;
+    public string attackQuip = "<1> damage was dealt to <2>!";
+    [SerializeField]
+    private bool isRandomEnemy = true;
 
     TurnOrder Turnmaker;
     private bool canPlayDeathAnimation = true;
@@ -24,6 +27,10 @@ public class Enemy : Character
         sr = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody>();
         Turnmaker = FindObjectOfType<TurnOrder>();
+        if (isRandomEnemy)
+        {
+            EnemyCreator.Instance.RandomizeEnemy(this);
+        }
     }
 
     // Update is called once per frame
@@ -56,6 +63,7 @@ public class Enemy : Character
             sr.color = Color.gray;
         }
     }
+
     void OnMouseDown()
     {
         //Debug.Log("The mouse is down!");
@@ -69,6 +77,7 @@ public class Enemy : Character
             this.TakeDamage(damage);
             //print(damage + " was dealt to the enemy");
             CombatManager.Instance.logText.text = damage.ToString() + " damage was dealt to " + characterName + "!";
+            //CombatManager.Instance.logText.text = FormatAttackQuip(damage, characterName);
             CombatManager.Instance.isAttacking = false;
             Turnmaker.playerturns();
             
@@ -95,10 +104,5 @@ public class Enemy : Character
     {
         currHealth -= damageAmount;
         //check if dead
-    }
-
-    public void RandomizeSelf()
-    {
-
     }
 }

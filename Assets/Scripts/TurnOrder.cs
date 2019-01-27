@@ -264,9 +264,10 @@ public class TurnOrder : MonoBehaviour
             battleOver = true;
             foreach (GameObject player in characters)
             {
-                Character c = player.GetComponent<Character>();
+                Player c = player.GetComponent<Player>();
                 c.currHealth = c.maxHealth;
                 c.currIP = c.maxIP;
+                c.damageToDeal = 0;
             }
             if (playerCommandButtonPanel != null)
             {
@@ -289,9 +290,10 @@ public class TurnOrder : MonoBehaviour
                 battleOver = true;
                 foreach (GameObject player in characters)
                 {
-                    Character c = player.GetComponent<Character>();
+                    Player c = player.GetComponent<Player>();
                     c.currHealth = c.maxHealth;
                     c.currIP = c.maxIP;
+                    c.damageToDeal = 0;
                 }
                 StartCoroutine(TransitionBackToOverworld());
             }
@@ -311,6 +313,20 @@ public class TurnOrder : MonoBehaviour
         }
     }
 
+    public void CheckIfPlayersAlive()
+    {
+        for (int i = 0; i < characters.Count; i++)
+        {
+            if (characters[i].GetComponent<Character>().IsDead != true)
+            {
+                if (!Order.Contains(characters[i]))
+                {
+                    Order.Enqueue(characters[i]);
+                }
+            }
+        }
+    }
+
     private IEnumerator waitforflagreset()
     {
         canRunCoro = false;
@@ -318,6 +334,7 @@ public class TurnOrder : MonoBehaviour
         canDrawNewTurn = true;
         canRunCoro = true;
         currentturn = Order.Dequeue();
+        //CheckIfPlayersAlive();
     }
 
     private IEnumerator TransitionBackToOverworld()
@@ -409,8 +426,9 @@ public class TurnOrder : MonoBehaviour
         }
         int attackvictim = Random.Range(0, counts);
         //CHECK if person is not dead, otherwise choose another player
-        Character attackee = livingchars[attackvictim].GetComponent<Character>();
-        attackee.TakeDamage(currentturn.GetComponent<Character>().attack);/*(combat.CalculateDamageAmount(currentturn.GetComponent<Character>().attack, attackee.defense));*/
+        Player attackee = livingchars[attackvictim].GetComponent<Player>();
+        //pass quip from here
+        attackee.TakeDamage(currentturn.GetComponent<Character>().attack, currentturn.GetComponent<Enemy>().attackQuip);/*(combat.CalculateDamageAmount(currentturn.GetComponent<Character>().attack, attackee.defense));*/
     }
     public void playerturns()
     {
