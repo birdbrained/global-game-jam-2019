@@ -861,7 +861,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &480084285
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1222,7 +1222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &682187540
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1903,7 +1903,7 @@ GameObject:
   - component: {fileID: 1150255429}
   - component: {fileID: 1150255428}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Name Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2323,7 +2323,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: magic
+  m_Text: 'Imagination: '
 --- !u!222 &1226185125
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2640,6 +2640,8 @@ MonoBehaviour:
   defending: 0
   damageToDeal: 0
   characterNameText: {fileID: 67291557}
+  imaginationText: {fileID: 1226185124}
+  healthText: {fileID: 1808310432}
 --- !u!4 &1385540110
 Transform:
   m_ObjectHideFlags: 0

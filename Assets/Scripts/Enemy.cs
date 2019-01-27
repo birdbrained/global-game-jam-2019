@@ -7,6 +7,7 @@ public class Enemy : Character
     public bool isSelectable;
     public bool wasImagined;
     public bool wasAttacked;
+
     private SpriteRenderer sr;
 
     // Start is called before the first frame update
@@ -18,6 +19,7 @@ public class Enemy : Character
     // Update is called once per frame
     void Update()
     {
+        
         if (this.IsDead)
         {
             //play animation here
