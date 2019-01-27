@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657868, g: 0.49641263, b: 0.57481706, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -511,6 +511,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1665517818}
+        m_MethodName: playerturns
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &237781469
@@ -730,7 +741,7 @@ MonoBehaviour:
   currIP: 0
   attack: 0
   defense: 0
-  agility: 1
+  agility: 5
   defending: 0
   isSelectable: 0
   wasImagined: 0
@@ -2560,7 +2571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.2000122, y: -193.70001}
+  m_AnchoredPosition: {x: -0.19995117, y: -193.70001}
   m_SizeDelta: {x: -595.4, y: -387.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1380560606
@@ -3036,7 +3047,7 @@ MonoBehaviour:
   currIP: 0
   attack: 0
   defense: 0
-  agility: 1
+  agility: 5
   defending: 0
   isSelectable: 0
   wasImagined: 0
@@ -3100,12 +3111,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentturn: {fileID: 1385540108}
-  characters:
-  - {fileID: 0}
-  - {fileID: 0}
+  characters: []
   enemies: []
   allentities: []
+  livingchars: []
   win: 0
+  combat: {fileID: 886598506}
 --- !u!4 &1665517819
 Transform:
   m_ObjectHideFlags: 0
@@ -3600,7 +3611,7 @@ MonoBehaviour:
   currIP: 0
   attack: 0
   defense: 1
-  agility: 1
+  agility: 5
   defending: 0
   isSelectable: 0
   wasImagined: 0
@@ -3722,7 +3733,7 @@ MonoBehaviour:
   currIP: 0
   attack: 0
   defense: 0
-  agility: 1
+  agility: 5
   defending: 0
   isSelectable: 0
   wasImagined: 0
