@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CombatManager : MonoBehaviour
 {
     //IF DOING TURN ORDER, PULL FROM GIT HUB TO UPDATE THE SCRIPTS!!!!
-    GameObject currentchar;
+    //GameObject currentchar;
     public GameObject combatMenu;
     public bool isAttacking;
     private static CombatManager instance;
@@ -29,7 +29,7 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         //Should grab and instnatiate the characters in party
-        currentchar = turnMaster.currentturn;
+        //currentchar = turnMaster.currentturn;
     }
 
     // Update is called once per frame

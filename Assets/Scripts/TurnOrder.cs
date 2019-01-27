@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class TurnOrder : MonoBehaviour
 {
     public GameObject currentturn;
+    [SerializeField]
+    private GameObject playerCommandButtonPanel;
 
     public List<GameObject> characters = new List<GameObject>();
     public List<GameObject> enemies = new List<GameObject>();
@@ -100,6 +102,12 @@ public class TurnOrder : MonoBehaviour
     void Update()
     {
         //Debug.Log("live enemies: " + liveenemy.ToString());
+        CheckIfEnemyDead();
+        while (currentturn.GetComponent<Character>().IsDead && currentturn.tag == "Enemy")
+        {
+            currentturn = Order.Dequeue();
+        }
+
         if ((livefriend > 0) && (liveenemy > 0))
         {
             if (currentturn.tag == "Character" && canDrawNewTurn)
@@ -128,18 +136,19 @@ public class TurnOrder : MonoBehaviour
                     livefriend = counttag("Character", allentities, count);
                     liveenemy = counttag("Enemy", allentities, count);
                     Debug.Log("Enemy Up");
+                    currentPlayer.text = "The enemy strikes!";
                     StartCoroutine(waitforflagreset());
                 }
                 
                 
-                currentPlayer.text = "The enemy strikes!";
+                
 
-                enemyattack(characters);
+                /*enemyattack(characters);
                 Order.Enqueue(currentturn);
                 livefriend = counttag("Character", allentities, count);
                 liveenemy = counttag("Enemy", allentities, count);
                 Debug.Log("Enemy Up");
-                currentturn = Order.Dequeue();
+                currentturn = Order.Dequeue();*/
 
             }
             else
@@ -147,11 +156,18 @@ public class TurnOrder : MonoBehaviour
                 if (playerturn==true)
                 {
                     //Debug.Log("Make your move");
-                    
+                    CombatManager.Instance.ChangeLogText("It's " + currentturn.GetComponent<Character>().characterName + "'s turn.");
+                    if (playerCommandButtonPanel != null)
+                    {
+                        playerCommandButtonPanel.SetActive(true);
+                    }
                 }
                 else
                 {
-                    
+                    if (playerCommandButtonPanel != null)
+                    {
+                        playerCommandButtonPanel.SetActive(false);
+                    }
                     if (canRunCoro)
                     {
                         Order.Enqueue(currentturn);
@@ -181,6 +197,20 @@ public class TurnOrder : MonoBehaviour
             CombatManager.Instance.ChangeLogText("ayy lmao you win!");
         }
     }
+
+    public void CheckIfEnemyDead()
+    {
+        for (int i = 0; i < enemies.Count; i++)
+        {
+            Character enemy = enemies[i].GetComponent<Character>();
+            if (enemy.IsDead)
+            {
+                enemies.Remove(enemies[i]);
+                i--;
+            }
+        }
+    }
+
     private IEnumerator waitforflagreset()
     {
         canRunCoro = false;

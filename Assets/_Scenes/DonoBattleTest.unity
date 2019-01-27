@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -148,7 +148,7 @@ MonoBehaviour:
   currIP: 0
   attack: 5
   defense: 4
-  agility: 3
+  agility: 30
   defending: 0
   damageToDeal: 0
   characterNameText: {fileID: 1229180379}
@@ -330,7 +330,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &167253461
 RectTransform:
   m_ObjectHideFlags: 0
@@ -339,16 +339,16 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167253460}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.9}
   m_LocalScale: {x: 0.5004334, y: 0.5004334, z: 0.5004334}
   m_Children: []
   m_Father: {fileID: 480084285}
-  m_RootOrder: 5
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 209, y: 63}
-  m_SizeDelta: {x: -621.6, y: -146.49551}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 209, y: 56.9}
+  m_SizeDelta: {x: 160.40002, y: 17}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &167253462
 MonoBehaviour:
@@ -391,7 +391,7 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 167253460}
-  m_CullTransparentMesh: 1
+  m_CullTransparentMesh: 0
 --- !u!1 &192270617
 GameObject:
   m_ObjectHideFlags: 0
@@ -471,6 +471,45 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 192270617}
   m_CullTransparentMesh: 0
+--- !u!1 &192482278
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 192482279}
+  m_Layer: 5
+  m_Name: PlayerCommandButtons
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &192482279
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192482278}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 237781467}
+  - {fileID: 1415451308}
+  - {fileID: 1292328254}
+  - {fileID: 1707884523}
+  m_Father: {fileID: 480084285}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -169.3, y: 26.8}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &231760053
 GameObject:
   m_ObjectHideFlags: 0
@@ -582,17 +621,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 237781466}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 863468500}
-  m_Father: {fileID: 480084285}
+  m_Father: {fileID: 192482279}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 129, y: -30}
+  m_AnchoredPosition: {x: -42.499985, y: -34.069637}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &237781468
@@ -715,7 +754,7 @@ RectTransform:
   m_LocalScale: {x: 0.7135, y: 0.7135, z: 0.7135}
   m_Children: []
   m_Father: {fileID: 480084285}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -865,7 +904,7 @@ MonoBehaviour:
   currIP: 0
   attack: 0
   defense: 0
-  agility: 5
+  agility: 1
   defending: 0
   isSelectable: 0
   wasImagined: 0
@@ -1087,10 +1126,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 237781467}
-  - {fileID: 1415451308}
-  - {fileID: 1292328254}
-  - {fileID: 1707884523}
+  - {fileID: 192482279}
   - {fileID: 347168884}
   - {fileID: 167253461}
   m_Father: {fileID: 770095190}
@@ -1376,7 +1412,7 @@ MonoBehaviour:
   currIP: 0
   attack: 5
   defense: 4
-  agility: 3
+  agility: 50
   defending: 0
   damageToDeal: 0
   characterNameText: {fileID: 2004490031}
@@ -2922,17 +2958,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292328253}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 650618490}
-  m_Father: {fileID: 480084285}
+  m_Father: {fileID: 192482279}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 309, y: -75}
+  m_AnchoredPosition: {x: 137.50003, y: -79.06964}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1292328255
@@ -3250,17 +3286,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1415451307}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1794792675}
-  m_Father: {fileID: 480084285}
+  m_Father: {fileID: 192482279}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 309, y: -30}
+  m_AnchoredPosition: {x: 137.50003, y: -34.069637}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1415451309
@@ -3762,7 +3798,7 @@ MonoBehaviour:
   currIP: 0
   attack: 0
   defense: 0
-  agility: 5
+  agility: 35
   defending: 0
   isSelectable: 0
   wasImagined: 0
@@ -3826,6 +3862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentturn: {fileID: 1385540108}
+  playerCommandButtonPanel: {fileID: 192482278}
   characters: []
   enemies: []
   allentities: []
@@ -3873,17 +3910,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707884522}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1197923764}
-  m_Father: {fileID: 480084285}
+  m_Father: {fileID: 192482279}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 129, y: -75}
+  m_AnchoredPosition: {x: -42.499985, y: -79.06964}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1707884524
@@ -4483,7 +4520,7 @@ MonoBehaviour:
   currIP: 0
   attack: 0
   defense: 1
-  agility: 5
+  agility: 40
   defending: 0
   isSelectable: 0
   wasImagined: 0

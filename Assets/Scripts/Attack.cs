@@ -19,6 +19,11 @@ public class Attack : MonoBehaviour
     protected string attackName = "My Attack";
     [SerializeField]
     protected string attackLaunchString = "<1> attacks!";
+    [SerializeField]
+    protected AttackID attackID;
+    [SerializeField]
+    private ParticleSystem particleSys;
+
 
     // Start is called before the first frame update
     void Start()
