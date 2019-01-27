@@ -10,10 +10,13 @@ public class Enemy : Character
     public bool wasAttacked;
     private SpriteRenderer sr;
 
+    TurnOrder Turnmaker;
+
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        Turnmaker = FindObjectOfType<TurnOrder>();
     }
 
     // Update is called once per frame
@@ -47,6 +50,7 @@ public class Enemy : Character
             //print(damage + " was dealt to the enemy");
             CombatManager.Instance.logText.text = damage.ToString() + " was dealt to " + characterName + "!";
             CombatManager.Instance.isAttacking = false;
+            Turnmaker.playerturns();
             
         }
     }
