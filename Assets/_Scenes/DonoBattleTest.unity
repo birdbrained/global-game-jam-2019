@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,7 +123,7 @@ GameObject:
   - component: {fileID: 56380534}
   - component: {fileID: 56380533}
   m_Layer: 0
-  m_Name: PlayerTest[3]
+  m_Name: Player3
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,8 +144,8 @@ MonoBehaviour:
   characterName: Snas
   maxHealth: 100
   currHealth: 100
-  maxIP: 0
-  currIP: 0
+  maxIP: 10
+  currIP: 10
   attack: 5
   defense: 4
   agility: 30
@@ -10514,6 +10514,7 @@ MonoBehaviour:
   deathPS1: {fileID: 228060552}
   deathPS2: {fileID: 961929921}
   attackQuip: <1> damage was dealt to <2>!
+  isRandomEnemy: 1
 --- !u!212 &279956060
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10811,7 +10812,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50.100025}
+  m_AnchoredPosition: {x: 0, y: -58}
   m_SizeDelta: {x: 135.83, y: 15.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &480084284
@@ -10832,7 +10833,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &480084285
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11012,8 +11013,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 129, y: -69}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 129.6, y: -57}
+  m_SizeDelta: {x: 161.2, y: 25.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &546871701
 MonoBehaviour:
@@ -11211,7 +11212,7 @@ GameObject:
   - component: {fileID: 597376330}
   - component: {fileID: 597376329}
   m_Layer: 0
-  m_Name: PlayerTest[2]
+  m_Name: Player2
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11232,8 +11233,8 @@ MonoBehaviour:
   characterName: Crash
   maxHealth: 100
   currHealth: 100
-  maxIP: 0
-  currIP: 0
+  maxIP: 100
+  currIP: 100
   attack: 5
   defense: 4
   agility: 50
@@ -11354,7 +11355,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &682187540
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11468,8 +11469,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 131, y: -108}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 131.6, y: -89.89996}
+  m_SizeDelta: {x: 161.2, y: 25.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &723179146
 MonoBehaviour:
@@ -11846,8 +11847,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 129, y: -148}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 129.6, y: -123.69997}
+  m_SizeDelta: {x: 161.2, y: 25.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &943931468
 MonoBehaviour:
@@ -16703,6 +16704,7 @@ MonoBehaviour:
   deathPS1: {fileID: 979694877}
   deathPS2: {fileID: 1227384903}
   attackQuip: <1> damage was dealt to <2>!
+  isRandomEnemy: 1
 --- !u!212 &963817553
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21534,6 +21536,7 @@ GameObject:
   - component: {fileID: 1057640967}
   - component: {fileID: 1057640966}
   - component: {fileID: 1057640965}
+  - component: {fileID: 1057640968}
   m_Layer: 5
   m_Name: ActionButton 1
   m_TagString: Untagged
@@ -21558,8 +21561,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 129, y: -30}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 129.6, y: -23.999966}
+  m_SizeDelta: {x: 161.2, y: 25.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1057640965
 MonoBehaviour:
@@ -21640,6 +21643,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1057640963}
   m_CullTransparentMesh: 0
+--- !u!114 &1057640968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1057640963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00928ec3575c66c44889b966f31c9546, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  descript: {fileID: 231760055}
+  baseText: 
 --- !u!1 &1111190936
 GameObject:
   m_ObjectHideFlags: 0
@@ -22185,7 +22202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -31.3}
+  m_AnchoredPosition: {x: 0, y: -38}
   m_SizeDelta: {x: 135.83, y: 15.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1226185124
@@ -27536,7 +27553,7 @@ GameObject:
   - component: {fileID: 1385540110}
   - component: {fileID: 1385540109}
   m_Layer: 0
-  m_Name: PlayerTest
+  m_Name: Player1
   m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27557,8 +27574,8 @@ MonoBehaviour:
   characterName: Dummy
   maxHealth: 100
   currHealth: 100
-  maxIP: 0
-  currIP: 0
+  maxIP: 50
+  currIP: 50
   attack: 1000
   defense: 4
   agility: 70
@@ -27745,7 +27762,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -50.1}
+  m_AnchoredPosition: {x: 0, y: -58}
   m_SizeDelta: {x: 135.83, y: 15.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1455473930
@@ -27824,7 +27841,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -33.1}
+  m_AnchoredPosition: {x: 0, y: -40.999977}
   m_SizeDelta: {x: 135.83, y: 15.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1492456995
@@ -33088,7 +33105,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -33.10001}
+  m_AnchoredPosition: {x: 0, y: -41.000015}
   m_SizeDelta: {x: 135.83, y: 15.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1723357670
@@ -33246,7 +33263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0, y: -48.30002}
+  m_AnchoredPosition: {x: 0, y: -55.000008}
   m_SizeDelta: {x: 135.83, y: 15.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1808310432
@@ -38413,6 +38430,7 @@ MonoBehaviour:
   deathPS1: {fileID: 279338532}
   deathPS2: {fileID: 1898210945}
   attackQuip: <1> damage was dealt to <2>!
+  isRandomEnemy: 1
 --- !u!54 &1919520815
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -43283,6 +43301,7 @@ MonoBehaviour:
   deathPS1: {fileID: 1722766033}
   deathPS2: {fileID: 1950874626}
   attackQuip: <1> damage was dealt to <2>!
+  isRandomEnemy: 1
 --- !u!212 &2130989476
 SpriteRenderer:
   m_ObjectHideFlags: 0
