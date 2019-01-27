@@ -10,6 +10,7 @@ public class CombatManager : MonoBehaviour
     public GameObject combatMenu;
     public bool isAttacking;
     private static CombatManager instance;
+    private static TurnOrder turnMaster;
     public static CombatManager Instance
     {
         get
@@ -17,6 +18,7 @@ public class CombatManager : MonoBehaviour
             if (instance == null)
             {
                 instance = FindObjectOfType<CombatManager>();
+                turnMaster = FindObjectOfType<TurnOrder>();
             }
             return instance;
         }
@@ -142,6 +144,15 @@ public class CombatManager : MonoBehaviour
     //test function for ui selection
     public void HighlightAllEnemies()
     {
+        //Only trigger when its players turn!!!
+        if(turnMaster.currentturn.GetComponent<Character>().characterName == currentchar.GetComponent<Character>().characterName)
+        {
+            Debug.Log("its " + currentchar.GetComponent<Character>().characterName + "'s turn!");
+        }
+        else
+        {
+            Debug.Log("its someone else's turn");
+        }
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         foreach (Enemy enemy in enemies)
         {
@@ -162,9 +173,18 @@ public class CombatManager : MonoBehaviour
             oldMenu.SetActive(false);
             newMenu.SetActive(true);
         }
-        
-        
+     
     }
+    //Outline for imagine attacks, and there variants per character
+    public void imagineMove()
+    {
+        //If the current character is a X party member, then ....
+    }
+
+
+
+
+
     public void EnableObject(GameObject obj)
     {
         obj.SetActive(true);

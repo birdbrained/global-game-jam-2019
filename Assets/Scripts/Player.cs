@@ -16,10 +16,6 @@ public class Player : Character
     private string baseTextHP;
     private string baseTextIP;
 
-    //This is a debug Timer for Enemies. Makes them "randomly" attack.
-    private int timer = 10;
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -38,14 +34,7 @@ public class Player : Character
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(Time.time);
-        if (Time.time % timer == 0 && Time.time != 0)
-        {
-            //Ill deal with attack communication later
-            Debug.Log("Damage has been dealt");
-            TakeDamage(10);
-        }
-
+        
         if (damageToDeal > 0 && Time.time % 0.5 == 0)
         {
             currHealth--;
@@ -58,6 +47,7 @@ public class Player : Character
     public override void TakeDamage(int damageAmount)
     {
         int damageTaken = CombatManager.Instance.CalculateDamageAmount(damageAmount, defense);
+        CombatManager.Instance.logText.text = Mathf.Abs(damageTaken).ToString() + " was taken by " + characterName + "!";
         if (defending)
         {
             damageTaken=damageTaken / 2;
