@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Transition
-  m_Shader: {fileID: 4800000, guid: 16cc4e3ddbb057148ab5c2c20099a08c, type: 3}
+  m_Name: UVOffset
+  m_Shader: {fileID: 4800000, guid: 95844acf95cf4cc4ca993f3f89ba54cb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,15 +19,15 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _MainTex:
-        m_Texture: {fileID: 0}
+    - _DisplaceTex:
+        m_Texture: {fileID: 2800000, guid: a202d6f5af4da8d4a911536b7ace781e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _TransitionTex:
-        m_Texture: {fileID: 2800000, guid: 5d6f66b051c05da4aa586a50556a07a1, type: 3}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: bb8dbacbd00234644a805c08ebbed4d7, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Cutoff: 0
+    - _Magnitude: 0.0426
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 255}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
