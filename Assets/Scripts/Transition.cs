@@ -14,6 +14,10 @@ public class Transition : MonoBehaviour
     private bool isTransitioning = false;
     private bool done = false;
     private float t = 0.0f;
+    [SerializeField]
+    private AudioSource aud;
+    [SerializeField]
+    private AudioSource bgm;
 
     void Start()
     {
@@ -43,5 +47,13 @@ public class Transition : MonoBehaviour
     {
         isTransitioning = true;
         nextLevel = lvl;
+        if (bgm != null)
+        {
+            bgm.Pause();
+        }
+        if (aud != null)
+        {
+            aud.Play();
+        }
     }
 }

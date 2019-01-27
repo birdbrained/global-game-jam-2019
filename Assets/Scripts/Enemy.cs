@@ -14,6 +14,9 @@ public class Enemy : Character
     private ParticleSystem deathPS1;
     [SerializeField]
     private ParticleSystem deathPS2;
+    [SerializeField]
+    public ParticleSystem attackPS { get; private set; }
+
     public string attackQuip = "<1> damage was dealt to <2>!";
     [SerializeField]
     private bool isRandomEnemy = true;
