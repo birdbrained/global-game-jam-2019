@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Transition
-  m_Shader: {fileID: 4800000, guid: 16cc4e3ddbb057148ab5c2c20099a08c, type: 3}
+  m_Name: lines
+  m_Shader: {fileID: 4800000, guid: e5112638c99d73145a2bd52540b130eb, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -20,14 +20,14 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _TransitionTex:
-        m_Texture: {fileID: 2800000, guid: 5d6f66b051c05da4aa586a50556a07a1, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Texture: {fileID: 2800000, guid: e4e5201b7c7f4664ea15ac76669b6ef5, type: 3}
+        m_Scale: {x: 18.88, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Cutoff: 0
+    - _Circles: 754
+    - _Speed: 100
+    - _Time: 20
+    - _XPos: 1
+    - _YPos: 4.8
     m_Colors:
-    - _Color: {r: 0, g: 0, b: 0, a: 255}
+    - _Color: {r: 1, g: 0.5613208, b: 0.57490253, a: 1}

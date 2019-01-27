@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TurnOrder : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class TurnOrder : MonoBehaviour
 
     public GameObject[] livingchars;
     public Queue<GameObject> Order = new Queue<GameObject>();
+
+
+    public Text currentPlayer;
 
     private int livefriend;
     private int liveenemy;
@@ -100,6 +104,9 @@ public class TurnOrder : MonoBehaviour
         {
             if (currentturn.tag == "Character" && canDrawNewTurn)
             {
+                //Updating UI
+                currentPlayer.text = "Current Player: " + currentturn.GetComponent<Character>().characterName;
+
                 playerturn = true;
                 canDrawNewTurn = false;
             }
@@ -112,7 +119,7 @@ public class TurnOrder : MonoBehaviour
                 Order.Enqueue(currentturn);
                 Debug.Log("Character Down");
             }
-            else if ((currentturn.GetComponent<Character>().IsDead == false) && (currentturn.tag == "Enemy"))
+            else if ((currentturn.GetComponent<Character>().IsDead == false) && (currentturn.tag == "Enemy") && canDrawNewTurn)
             {
                 if (canRunCoro)
                 {
@@ -124,12 +131,22 @@ public class TurnOrder : MonoBehaviour
                     StartCoroutine(waitforflagreset());
                 }
                 
+                
+                currentPlayer.text = "The enemy strikes!";
+
+                enemyattack(characters);
+                Order.Enqueue(currentturn);
+                livefriend = counttag("Character", allentities, count);
+                liveenemy = counttag("Enemy", allentities, count);
+                Debug.Log("Enemy Up");
+                currentturn = Order.Dequeue();
+
             }
             else
             {
                 if (playerturn==true)
                 {
-                    Debug.Log("Make your move");
+                    //Debug.Log("Make your move");
                     
                 }
                 else
