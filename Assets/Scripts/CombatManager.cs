@@ -29,7 +29,7 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         //Should grab and instnatiate the characters in party
-        
+        currentchar = turnMaster.currentturn;
     }
 
     // Update is called once per frame
@@ -145,14 +145,18 @@ public class CombatManager : MonoBehaviour
     public void HighlightAllEnemies()
     {
         //Only trigger when its players turn!!!
-        if(turnMaster.currentturn.GetComponent<Character>().characterName == currentchar.GetComponent<Character>().characterName)
+        //The following below is all broken, but leaving it here in case it is actually useful
+        //Debug.Log(turnMaster.currentturn.GetComponent<Character>().characterName);
+        /*
+        if (turnMaster.currentturn.GetComponent<Character>().characterName == GameObject.Find("PlayerTest").GetComponent<Player>().characterName)
         {
-            Debug.Log("its " + currentchar.GetComponent<Character>().characterName + "'s turn!");
+            Debug.Log("its " + currentchar.GetComponent<Player>().characterName + "'s turn!");
         }
         else
         {
             Debug.Log("its someone else's turn");
         }
+        */
         Enemy[] enemies = FindObjectsOfType<Enemy>();
         foreach (Enemy enemy in enemies)
         {
