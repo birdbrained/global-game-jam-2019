@@ -158,9 +158,9 @@ public class TurnOrder : MonoBehaviour
                 playerturn = true;
                 canDrawNewTurn = false;
             }
-            if (currentturn.GetComponent<Character>().defending == true)
+            if ((currentturn.GetComponent<Character>().defending == true)&&playerturn)
             {
-                currentturn.GetComponent<Character>().defending = false;
+                 currentturn.GetComponent<Character>().defending = false;
             }
             if ((currentturn.GetComponent<Character>().IsDead == true) && (currentturn.tag == "Character"))
             {
@@ -377,7 +377,13 @@ public class TurnOrder : MonoBehaviour
     {
         playerturn = false;
     }
-
+    public void defend()
+    {
+        currentturn.GetComponent<Character>().defending = true;
+        CombatManager.Instance.ChangeLogText(currentturn.GetComponent<Character>().characterName + " defended!");
+        playerturns();
+        
+    }
     private void SetupPlayerUIStuff()
     {
         Player player1 = GameObject.Find("Player1").GetComponent<Player>();

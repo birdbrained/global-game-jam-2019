@@ -23,6 +23,6 @@ public abstract class Character : MonoBehaviour
             return currHealth <= 0;
         }
     }
-
+    
     public abstract void TakeDamage(int damageAmount);
 }
