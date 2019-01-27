@@ -169,6 +169,14 @@ public class CombatManager : MonoBehaviour
     {
         obj.SetActive(true);
     }
+
+    public void ChangeLogText(string s)
+    {
+        if (logText != null)
+        {
+            logText.text = s;
+        }
+    }
    
 }
 

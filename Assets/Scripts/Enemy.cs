@@ -26,7 +26,8 @@ public class Enemy : Character
         if (this.IsDead)
         {
             //play animation here
-            print("He DIED");
+            //print("He DIED");
+            isSelectable = false;
             //This is NOT how you get you should handle death. Use the queue system established by turn order!
             //Destroy(this);
         }
@@ -38,6 +39,10 @@ public class Enemy : Character
         {
             sr.color = Color.white;
         }
+        if (IsDead)
+        {
+            sr.color = Color.gray;
+        }
     }
     void OnMouseDown()
     {
@@ -46,7 +51,9 @@ public class Enemy : Character
         {
             //check if the attack was an imagined one or a normal one!
             //This damage calcuation is a test. actual combat calcuation handled by someone else
-            int damage = CombatManager.Instance.CalculateDamageAmount(5, 1);
+            Character character = Turnmaker.currentturn.GetComponent<Character>();
+            Debug.LogWarning(character == null);
+            int damage = CombatManager.Instance.CalculateDamageAmount(character.attack, defense);
             this.TakeDamage(damage);
             //print(damage + " was dealt to the enemy");
             CombatManager.Instance.logText.text = damage.ToString() + " was dealt to " + characterName + "!";

@@ -19,6 +19,7 @@ public class TurnOrder : MonoBehaviour
     public bool win;
     private bool playerturn;
     private bool canDrawNewTurn = true;
+    private bool canRunCoro = true;
 
     public CombatManager combat;
     private static TurnOrder instance;
@@ -94,6 +95,7 @@ public class TurnOrder : MonoBehaviour
     
     void Update()
     {
+        //Debug.Log("live enemies: " + liveenemy.ToString());
         if ((livefriend > 0) && (liveenemy > 0))
         {
             if (currentturn.tag == "Character" && canDrawNewTurn)
@@ -109,46 +111,67 @@ public class TurnOrder : MonoBehaviour
             {
                 Order.Enqueue(currentturn);
                 Debug.Log("Character Down");
-                currentturn = Order.Dequeue();
             }
             else if ((currentturn.GetComponent<Character>().IsDead == false) && (currentturn.tag == "Enemy"))
             {
+                if (canRunCoro)
+                {
+                    enemyattack(characters);
+                    Order.Enqueue(currentturn);
+                    livefriend = counttag("Character", allentities, count);
+                    liveenemy = counttag("Enemy", allentities, count);
+                    Debug.Log("Enemy Up");
+                    StartCoroutine(waitforflagreset());
+                }
                 
-                enemyattack(characters);
-                Order.Enqueue(currentturn);
-                livefriend = counttag("Character", allentities, count);
-                liveenemy = counttag("Enemy", allentities, count);
-                Debug.Log("Enemy Up");
-                currentturn = Order.Dequeue();
             }
             else
             {
-                if (playerturn)
+                if (playerturn==true)
                 {
                     Debug.Log("Make your move");
                     
                 }
                 else
                 {
-                    Order.Enqueue(currentturn);
-                    livefriend = counttag("Character", allentities, count);
-                    liveenemy = counttag("Enemy", allentities, count);
-                    Debug.Log("Player Moved");
-                    currentturn = Order.Dequeue();
-                    canDrawNewTurn = true;
+                    
+                    if (canRunCoro)
+                    {
+                        Order.Enqueue(currentturn);
+                        livefriend = counttag("Character", allentities, count);
+                        liveenemy = counttag("Enemy", allentities, count);
+                        Debug.Log("Player Moved");
+                        StartCoroutine(waitforflagreset());
+                    }
+                    
+
                 }
             }
+            /*if (canDrawNewTurn)
+            {
+                currentturn = Order.Dequeue();
+                
+            }*/
         }
         if (livefriend == 0)
         {
             win = false;
+            CombatManager.Instance.ChangeLogText("You lost...");
         }
         else if (liveenemy == 0)
         {
             win = true;
+            CombatManager.Instance.ChangeLogText("ayy lmao you win!");
         }
     }
-    
+    private IEnumerator waitforflagreset()
+    {
+        canRunCoro = false;
+        yield return new WaitForSeconds(3f);
+        canDrawNewTurn = true;
+        canRunCoro = true;
+        currentturn = Order.Dequeue();
+    }
     private List<GameObject> chargrab()
     {
        // Debug.Log("Did is this the issue?");
@@ -210,7 +233,7 @@ public class TurnOrder : MonoBehaviour
     {
         foreach (GameObject i in all)
         {
-            if (i.tag == tag)
+            if (i.tag == tag && !i.GetComponent<Character>().IsDead)
             {
                 count += 1;
             }
@@ -236,7 +259,6 @@ public class TurnOrder : MonoBehaviour
     public void playerturns()
     {
         playerturn = false;
-        canDrawNewTurn = false;
     }
     
 }

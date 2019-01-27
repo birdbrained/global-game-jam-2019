@@ -17,7 +17,7 @@ public class Player : Character
     private string baseTextIP;
 
     //This is a debug Timer for Enemies. Makes them "randomly" attack.
-    private int timer = 10;
+
 
 
     // Start is called before the first frame update
@@ -38,13 +38,7 @@ public class Player : Character
     // Update is called once per frame
     void FixedUpdate()
     {
-        Debug.Log(Time.time);
-        if (Time.time % timer == 0 && Time.time != 0)
-        {
-            //Ill deal with attack communication later
-            Debug.Log("Damage has been dealt");
-            TakeDamage(10);
-        }
+        //Debug.Log(Time.time);
 
         if (damageToDeal > 0 && Time.time % 0.5 == 0)
         {
