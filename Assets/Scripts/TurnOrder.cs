@@ -111,7 +111,7 @@ public class TurnOrder : MonoBehaviour
                 Debug.Log("Character Down");
                 currentturn = Order.Dequeue();
             }
-            else if ((currentturn.GetComponent<Character>().IsDead == false) && (currentturn.tag == "Enemy"))
+            else if ((currentturn.GetComponent<Character>().IsDead == false) && (currentturn.tag == "Enemy") && canDrawNewTurn)
             {
                 
                 enemyattack(characters);
@@ -125,7 +125,7 @@ public class TurnOrder : MonoBehaviour
             {
                 if (playerturn)
                 {
-                    Debug.Log("Make your move");
+                    //Debug.Log("Make your move");
                     
                 }
                 else
