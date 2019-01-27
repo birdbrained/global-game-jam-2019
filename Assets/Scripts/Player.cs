@@ -52,15 +52,15 @@ public class Player : Character
                 }
                 break;
         }
-        if (characterNameText != null)
+        /*if (characterNameText != null)
         {
             characterNameText.text = characterName;
-            baseTextHP = healthText.text;
-            baseTextIP = imaginationText.text;
-            imaginationText.text = imaginationText.text + " " + this.maxHealth.ToString();
-            healthText.text = healthText.text + " " + this.maxIP.ToString();
+            //baseTextHP = healthText.text;
+            //baseTextIP = imaginationText.text;
+            //imaginationText.text = imaginationText.text + " " + this.maxHealth.ToString();
+            //healthText.text = healthText.text + " " + this.maxIP.ToString();
             
-        }
+        }*/
         DontDestroyOnLoad(gameObject);
     }
 
@@ -79,11 +79,11 @@ public class Player : Character
         }
         if (imaginationText != null)
         {
-            imaginationText.text = "IP: " + currIP.ToString();
+            imaginationText.text = currIP.ToString();
         }
         if (healthText != null)
         {
-            healthText.text =  "HP: " + currHealth.ToString();
+            healthText.text = currHealth.ToString();
         }
         if (characterNameText != null)
         {
@@ -126,6 +126,10 @@ public class Player : Character
 
         CombatManager.Instance.logText.text = GameManager.Instance.FormatAttackQuip(damageTaken, characterName, quip);
         damageToDeal += damageTaken;
+        if (damageToDeal >= currHealth)
+        {
+            CombatManager.Instance.logText.text = CombatManager.Instance.logText.text.Replace("damage", "MORTAL DAMAGE");
+        }
         Debug.Log("Damage to deal: " + damageToDeal.ToString());
     }
 }

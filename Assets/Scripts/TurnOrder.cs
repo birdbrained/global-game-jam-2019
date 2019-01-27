@@ -432,7 +432,8 @@ public class TurnOrder : MonoBehaviour
         attackee.TakeDamage(attacker.attack, attacker.attackQuip);/*(combat.CalculateDamageAmount(currentturn.GetComponent<Character>().attack, attackee.defense));*/
         if (attacker.attackPS != null)
         {
-            attacker.attackPS.Play();
+            //attacker.attackPS.Play();
+            Instantiate(attacker.attackPS, attacker.transform.position, attacker.transform.rotation);
         }
     }
     public void playerturns()

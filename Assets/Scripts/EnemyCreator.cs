@@ -25,6 +25,7 @@ public class EnemyCreator : MonoBehaviour
     public int[] enemyDefenses;
     public int[] enemyAgilities;
     public string[] enemyAttackQuips;
+    public ParticleSystem[] enemyAttackPSs;
 
     // Start is called before the first frame update
     void Start()
@@ -51,5 +52,6 @@ public class EnemyCreator : MonoBehaviour
         enemy.defense = enemyDefenses[index];
         enemy.agility = enemyAgilities[index];
         enemy.attackQuip = enemyAttackQuips[index];
+        enemy.attackPS = enemyAttackPSs[index];
     }
 }

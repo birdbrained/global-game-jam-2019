@@ -14,8 +14,10 @@ public class Enemy : Character
     private ParticleSystem deathPS1;
     [SerializeField]
     private ParticleSystem deathPS2;
+    //[SerializeField]
+    //public Transform particleSystemSpawnPoint;
     [SerializeField]
-    public ParticleSystem attackPS { get; private set; }
+    public ParticleSystem attackPS;
 
     public string attackQuip = "<1> damage was dealt to <2>!";
     [SerializeField]

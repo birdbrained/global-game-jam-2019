@@ -593,6 +593,7 @@ MonoBehaviour:
   - Balls of ooze and tax papers! <1> damage to <2>!
   - Something happened to <2> for <1> damage...
   - Thinking Bear thought REALLLY hard and hit <2> for <1> damage!
+  enemyAttackPSs: []
 --- !u!1 &192270617
 GameObject:
   m_ObjectHideFlags: 0
@@ -14448,7 +14449,8 @@ MonoBehaviour:
   sr: {fileID: 0}
   deathPS1: {fileID: 279338532}
   deathPS2: {fileID: 1898210945}
-  attackQuip: ajalJK;;'SD1991JSAs (<1>-<2>);;''113124S
+  attackPS: {fileID: 0}
+  attackQuip: ajalJK;;'SD1991JSAs (<1>-damage-<2>);;''113124S
   isRandomEnemy: 0
 --- !u!54 &1919520815
 Rigidbody:
