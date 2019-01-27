@@ -7,17 +7,51 @@ public class Player : Character
 {
     public int damageToDeal;
     [SerializeField]
-    private Text characterNameText;
+    public Text characterNameText;
     [SerializeField]
-    private Text imaginationText;
+    public Text imaginationText;
     [SerializeField]
-    private Text healthText;
+    public Text healthText;
+    public int playerNum;
 
     private string baseTextHP;
     private string baseTextIP;
     // Start is called before the first frame update
     void Start()
     {
+        switch (playerNum)
+        {
+            case 1:
+                if (GameManager.Instance.player1Created == false)
+                {
+                    GameManager.Instance.player1Created = true;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+                break;
+            case 2:
+                if (GameManager.Instance.player2Created == false)
+                {
+                    GameManager.Instance.player2Created = true;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+                break;
+            default:
+                if (GameManager.Instance.player3Created == false)
+                {
+                    GameManager.Instance.player3Created = true;
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+                break;
+        }
         if (characterNameText != null)
         {
             characterNameText.text = characterName;
@@ -38,20 +72,30 @@ public class Player : Character
             currHealth--;
             damageToDeal--;
         }
+        if (IsDead)
+        {
+            damageToDeal = 0;
+            currHealth = 0;
+        }
         if (imaginationText != null)
         {
-            imaginationText.text = baseTextIP + " " + this.currIP.ToString();
+            imaginationText.text = "IP: " + currIP.ToString();
         }
         if (healthText != null)
         {
-            healthText.text =  baseTextHP + " " + this.currHealth.ToString();
+            healthText.text =  "HP: " + currHealth.ToString();
+        }
+        if (characterNameText != null)
+        {
+            characterNameText.text = characterName;
         }
     }
 
     public override void TakeDamage(int damageAmount)
     {
+        Debug.Log("TakeDamage: " + damageAmount.ToString());
         int damageTaken = CombatManager.Instance.CalculateDamageAmount(damageAmount, defense);
-        CombatManager.Instance.logText.text = Mathf.Abs(damageTaken).ToString() + " was taken by " + characterName + "!";
+        
         if (defending)
         {
             damageTaken=damageTaken / 2;
@@ -60,6 +104,9 @@ public class Player : Character
         {
             damageTaken = 1;
         }
+
+        CombatManager.Instance.logText.text = characterName + " took " + damageTaken.ToString() + " damage!";
         damageToDeal += damageTaken;
+        Debug.Log("Damage to deal: " + damageToDeal.ToString());
     }
 }

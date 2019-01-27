@@ -9,13 +9,20 @@ public class Enemy : Character
     public bool wasAttacked;
 
     private SpriteRenderer sr;
+    private Rigidbody rb;
+    [SerializeField]
+    private ParticleSystem deathPS1;
+    [SerializeField]
+    private ParticleSystem deathPS2;
 
     TurnOrder Turnmaker;
+    private bool canPlayDeathAnimation = true;
 
     // Start is called before the first frame update
     void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody>();
         Turnmaker = FindObjectOfType<TurnOrder>();
     }
 
@@ -28,6 +35,11 @@ public class Enemy : Character
             //play animation here
             //print("He DIED");
             isSelectable = false;
+            if (canPlayDeathAnimation)
+            {
+                canPlayDeathAnimation = false;
+                StartCoroutine(AddAFuckTonOfForce());
+            }
             //This is NOT how you get you should handle death. Use the queue system established by turn order!
             //Destroy(this);
         }
@@ -56,11 +68,27 @@ public class Enemy : Character
             int damage = CombatManager.Instance.CalculateDamageAmount(character.attack, defense);
             this.TakeDamage(damage);
             //print(damage + " was dealt to the enemy");
-            CombatManager.Instance.logText.text = damage.ToString() + " was dealt to " + characterName + "!";
+            CombatManager.Instance.logText.text = damage.ToString() + " damage was dealt to " + characterName + "!";
             CombatManager.Instance.isAttacking = false;
             Turnmaker.playerturns();
             
         }
+    }
+
+    public IEnumerator AddAFuckTonOfForce()
+    {
+        rb.AddForce(new Vector3(-10f, 7f, 1f), ForceMode.Impulse);
+        rb.AddTorque(Vector3.forward * 5);
+        if (deathPS1 != null)
+        {
+            deathPS1.Play();
+        }
+        if (deathPS2 != null)
+        {
+            deathPS2.Play();
+        }
+        yield return new WaitForSeconds(3f);
+        //Destroy(gameObject);
     }
 
     public override void TakeDamage(int damageAmount)

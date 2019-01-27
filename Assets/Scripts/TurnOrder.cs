@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class TurnOrder : MonoBehaviour
 {
@@ -40,11 +41,34 @@ public class TurnOrder : MonoBehaviour
             return instance;
         }
     }
+    [Header("Player Text Fields")]
+    [SerializeField]
+    private Text player1NameText;
+    [SerializeField]
+    private Text player1HealthText;
+    [SerializeField]
+    private Text player1MagicText;
+    [SerializeField]
+    private Text player2NameText;
+    [SerializeField]
+    private Text player2HealthText;
+    [SerializeField]
+    private Text player2MagicText;
+    [SerializeField]
+    private Text player3NameText;
+    [SerializeField]
+    private Text player3HealthText;
+    [SerializeField]
+    private Text player3MagicText;
+
+    private bool battleOver = false;
+
     private void Start()
     {
         //Takes all characters and enemies on the screen
-        
+        battleOver = false;
         allentities = chargrab();
+        SetupPlayerUIStuff();
         //Assembles a queue for the order in combat
         Order = charOrder(allentities);
         livefriend = counttag("Character", allentities, count);
@@ -103,6 +127,22 @@ public class TurnOrder : MonoBehaviour
     {
         //Debug.Log("live enemies: " + liveenemy.ToString());
         CheckIfEnemyDead();
+
+        if (currentturn.tag == "Character")
+        {
+            if (playerCommandButtonPanel != null)
+            {
+                playerCommandButtonPanel.SetActive(true);
+            }
+        }
+        else
+        {
+            if (playerCommandButtonPanel != null)
+            {
+                playerCommandButtonPanel.SetActive(false);
+            }
+        }
+
         while (currentturn.GetComponent<Character>().IsDead && currentturn.tag == "Enemy")
         {
             currentturn = Order.Dequeue();
@@ -126,6 +166,9 @@ public class TurnOrder : MonoBehaviour
             {
                 Order.Enqueue(currentturn);
                 Debug.Log("Character Down");
+                canDrawNewTurn = true;
+                canRunCoro = true;
+                currentturn = Order.Dequeue();
             }
             else if ((currentturn.GetComponent<Character>().IsDead == false) && (currentturn.tag == "Enemy") && canDrawNewTurn)
             {
@@ -139,9 +182,6 @@ public class TurnOrder : MonoBehaviour
                     currentPlayer.text = "The enemy strikes!";
                     StartCoroutine(waitforflagreset());
                 }
-                
-                
-                
 
                 /*enemyattack(characters);
                 Order.Enqueue(currentturn);
@@ -190,11 +230,32 @@ public class TurnOrder : MonoBehaviour
         {
             win = false;
             CombatManager.Instance.ChangeLogText("You lost...");
+            battleOver = true;
+            foreach (GameObject player in characters)
+            {
+                Character c = player.GetComponent<Character>();
+                c.currHealth = c.maxHealth;
+                c.currIP = c.maxIP;
+            }
+            StartCoroutine(TransitionBackToOverworld());
         }
         else if (liveenemy == 0)
         {
             win = true;
             CombatManager.Instance.ChangeLogText("ayy lmao you win!");
+            if (battleOver == false)
+            {
+                //start corotunie to switch back to overworld
+                //maybe heal players?
+                battleOver = true;
+                foreach (GameObject player in characters)
+                {
+                    Character c = player.GetComponent<Character>();
+                    c.currHealth = c.maxHealth;
+                    c.currIP = c.maxIP;
+                }
+                StartCoroutine(TransitionBackToOverworld());
+            }
         }
     }
 
@@ -219,6 +280,13 @@ public class TurnOrder : MonoBehaviour
         canRunCoro = true;
         currentturn = Order.Dequeue();
     }
+
+    private IEnumerator TransitionBackToOverworld()
+    {
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene("Overworld");
+    }
+
     private List<GameObject> chargrab()
     {
        // Debug.Log("Did is this the issue?");
@@ -300,12 +368,31 @@ public class TurnOrder : MonoBehaviour
                 counts++;
             }
         }
-        int attackvictim = Random.Range(0, counts-1);
-        livingchars[attackvictim].GetComponent<Character>().TakeDamage(combat.CalculateDamageAmount(currentturn.GetComponent<Character>().attack, livingchars[attackvictim].GetComponent<Character>().defense));
+        int attackvictim = Random.Range(0, counts);
+        //CHECK if person is not dead, otherwise choose another player
+        Character attackee = livingchars[attackvictim].GetComponent<Character>();
+        attackee.TakeDamage(currentturn.GetComponent<Character>().attack);/*(combat.CalculateDamageAmount(currentturn.GetComponent<Character>().attack, attackee.defense));*/
     }
     public void playerturns()
     {
         playerturn = false;
+    }
+
+    private void SetupPlayerUIStuff()
+    {
+        Player player1 = GameObject.Find("Player1").GetComponent<Player>();
+        Player player2 = GameObject.Find("Player2").GetComponent<Player>();
+        Player player3 = GameObject.Find("Player3").GetComponent<Player>();
+
+        player1.characterNameText = player1NameText;
+        player1.healthText = player1HealthText;
+        player1.imaginationText = player1MagicText;
+        player2.characterNameText = player2NameText;
+        player2.healthText = player2HealthText;
+        player2.imaginationText = player2MagicText;
+        player3.characterNameText = player3NameText;
+        player3.healthText = player3HealthText;
+        player3.imaginationText = player3MagicText;
     }
     
 }

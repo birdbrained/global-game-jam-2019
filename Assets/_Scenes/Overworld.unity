@@ -234,7 +234,7 @@ GameObject:
   - component: {fileID: 180244324}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,19 +251,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d271617a316296c42ba8604050c763d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
-  maxHealth: 0
-  currHealth: 0
-  maxIP: 0
-  currIP: 0
-  attack: 0
-  defense: 0
-  agility: 0
+  characterName: Scott
+  maxHealth: 75
+  currHealth: 75
+  maxIP: 24
+  currIP: 24
+  attack: 24
+  defense: 61
+  agility: 16
   defending: 0
   damageToDeal: 0
   characterNameText: {fileID: 0}
   imaginationText: {fileID: 0}
   healthText: {fileID: 0}
+  playerNum: 1
 --- !u!4 &180244325
 Transform:
   m_ObjectHideFlags: 0
@@ -588,7 +589,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 213923966}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 21.35, y: 1.48, z: -3.99}
+  m_LocalPosition: {x: 16.15, y: 1.48, z: -1.56}
   m_LocalScale: {x: 3.196, y: 3.196, z: 3.196}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1415,7 +1416,7 @@ GameObject:
   - component: {fileID: 701592483}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1432,19 +1433,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d271617a316296c42ba8604050c763d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
-  maxHealth: 0
-  currHealth: 0
-  maxIP: 0
-  currIP: 0
-  attack: 0
-  defense: 0
-  agility: 0
+  characterName: Matt
+  maxHealth: 55
+  currHealth: 55
+  maxIP: 21
+  currIP: 21
+  attack: 47
+  defense: 27
+  agility: 21
   defending: 0
   damageToDeal: 0
   characterNameText: {fileID: 0}
   imaginationText: {fileID: 0}
   healthText: {fileID: 0}
+  playerNum: 2
 --- !u!4 &701592484
 Transform:
   m_ObjectHideFlags: 0
@@ -1471,7 +1473,7 @@ GameObject:
   - component: {fileID: 941156788}
   m_Layer: 0
   m_Name: Player3
-  m_TagString: Untagged
+  m_TagString: Character
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1488,19 +1490,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d271617a316296c42ba8604050c763d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
-  maxHealth: 0
-  currHealth: 0
-  maxIP: 0
-  currIP: 0
-  attack: 0
-  defense: 0
-  agility: 0
+  characterName: Josh
+  maxHealth: 31
+  currHealth: 31
+  maxIP: 60
+  currIP: 60
+  attack: 61
+  defense: 21
+  agility: 27
   defending: 0
   damageToDeal: 0
   characterNameText: {fileID: 0}
   imaginationText: {fileID: 0}
   healthText: {fileID: 0}
+  playerNum: 3
 --- !u!4 &941156789
 Transform:
   m_ObjectHideFlags: 0
@@ -2650,6 +2653,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2049661016}
   m_CullTransparentMesh: 0
+--- !u!1 &2056733586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2056733588}
+  - component: {fileID: 2056733587}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2056733587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056733586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a516b8c2a0df026469103de97d025186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Created: 0
+  player2Created: 0
+  player3Created: 0
+--- !u!4 &2056733588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2056733586}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -71.24166, y: -154.6425, z: 310.23663}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2064311493
 GameObject:
   m_ObjectHideFlags: 0
