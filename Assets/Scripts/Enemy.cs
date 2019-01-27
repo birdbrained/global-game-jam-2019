@@ -8,7 +8,7 @@ public class Enemy : Character
     public bool wasImagined;
     public bool wasAttacked;
 
-    private SpriteRenderer sr;
+    public SpriteRenderer sr;
     private Rigidbody rb;
     [SerializeField]
     private ParticleSystem deathPS1;
@@ -95,5 +95,10 @@ public class Enemy : Character
     {
         currHealth -= damageAmount;
         //check if dead
+    }
+
+    public void RandomizeSelf()
+    {
+
     }
 }

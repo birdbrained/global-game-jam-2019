@@ -28,6 +28,9 @@ public class TurnOrder : MonoBehaviour
     private bool canDrawNewTurn = true;
     private bool canRunCoro = true;
 
+    [SerializeField]
+    private GameObject[] characterIcons = new GameObject[3];
+
     public CombatManager combat;
     private static TurnOrder instance;
     public static TurnOrder Instance
@@ -134,9 +137,37 @@ public class TurnOrder : MonoBehaviour
             {
                 playerCommandButtonPanel.SetActive(true);
             }
+            if (currentturn.name == "Player1")
+            {
+                characterIcons[0].SetActive(true);
+            }
+            else
+            {
+                characterIcons[0].SetActive(false);
+            }
+            if (currentturn.name == "Player2")
+            {
+                characterIcons[1].SetActive(true);
+            }
+            else
+            {
+                characterIcons[1].SetActive(false);
+            }
+            if (currentturn.name == "Player3")
+            {
+                characterIcons[2].SetActive(true);
+            }
+            else
+            {
+                characterIcons[2].SetActive(false);
+            }
         }
         else
         {
+            foreach (GameObject icon in characterIcons)
+            {
+                icon.SetActive(false);
+            }
             if (playerCommandButtonPanel != null)
             {
                 playerCommandButtonPanel.SetActive(false);
@@ -237,12 +268,20 @@ public class TurnOrder : MonoBehaviour
                 c.currHealth = c.maxHealth;
                 c.currIP = c.maxIP;
             }
+            if (playerCommandButtonPanel != null)
+            {
+                playerCommandButtonPanel.SetActive(false);
+            }
             StartCoroutine(TransitionBackToOverworld());
         }
         else if (liveenemy == 0)
         {
             win = true;
             CombatManager.Instance.ChangeLogText("ayy lmao you win!");
+            if (playerCommandButtonPanel != null)
+            {
+                playerCommandButtonPanel.SetActive(false);
+            }
             if (battleOver == false)
             {
                 //start corotunie to switch back to overworld
