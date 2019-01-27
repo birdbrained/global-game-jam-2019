@@ -72,9 +72,22 @@ public class TurnOrder : MonoBehaviour
             {
                 win = false;
             }
+<<<<<<< HEAD
             else if (liveenemy == 0)
             {
                 win = true;
+=======
+            else {
+                //acted refers to an animation, set to true when animation is finished
+                while (acted != true)
+                {
+                    //wait for animation to finish
+                }
+                Order.Enqueue(currentturn);
+                acted = false;
+                livefriend = counttag("Character", allentities, count);
+                liveenemy = counttag("Enemy", allentities, count);
+>>>>>>> 224dd5e7bb8fd66e019b21b1f04137fd414e2244
             }
             */
         }
@@ -138,28 +151,29 @@ public class TurnOrder : MonoBehaviour
     
     private List<GameObject> chargrab()
     {
-        Debug.Log("Did is this the issue?");
+       // Debug.Log("Did is this the issue?");
         GameObject[] charArray = GameObject.FindGameObjectsWithTag("Character");
         foreach (GameObject charr in charArray)
         {
             characters.Add(charr);
             allentities.Add(charr);
         }
-        Debug.Log("Did is this the issue?: Enemy");
+       // Debug.Log("Did is this the issue?: Enemy");
         GameObject[] enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemiesArray)
         {
             enemies.Add(enemy);
             allentities.Add(enemy);
         }
-        Debug.Log("Did is this the issue?: Characters");
-
-        //characters.CopyTo(allentities, 0);
-
-        //enemies.CopyTo(allentities, characters.Length);
-
+       // Debug.Log("Did is this the issue?: Characters");
         return allentities;
     }
+    
+    /*public void ActedFinished()
+    {
+        acted = true;
+    }*/
+
     private Queue<GameObject> charOrder(List<GameObject> allentities)
     {
         int fastest=0;
@@ -177,14 +191,14 @@ public class TurnOrder : MonoBehaviour
             Debug.Log(shredlist.Count);
             foreach (GameObject i in shredlist)
             {
-                Debug.Log(i.name + " " + i.GetComponent<Character>().agility + " " + fastest);
+                //Debug.Log(i.name + " " + i.GetComponent<Character>().agility + " " + fastest);
                 if (i.GetComponent<Character>().agility > fastest)
                 {
-                    Debug.Log("its faster");
+                   // Debug.Log("its faster");
                     fastest = i.GetComponent<Character>().agility;
                     currentfastest = i;
                 }
-                else Debug.Log("not faster")
+               // else Debug.Log("not faster")
 ;
             }
             Order.Enqueue(currentfastest);

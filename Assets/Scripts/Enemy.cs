@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Enemy : Character
 {
-    
     public bool isSelectable;
     public bool wasImagined;
     public bool wasAttacked;
@@ -40,7 +39,7 @@ public class Enemy : Character
     }
     void OnMouseDown()
     {
-        Debug.Log("The mouse is down!");
+        //Debug.Log("The mouse is down!");
         if (isSelectable)
         {
             //check if the attack was an imagined one or a normal one!
@@ -60,5 +59,4 @@ public class Enemy : Character
         currHealth -= damageAmount;
         //check if dead
     }
-    
 }
