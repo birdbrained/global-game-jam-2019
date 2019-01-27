@@ -101,21 +101,21 @@ public class TurnOrder : MonoBehaviour
     
     private List<GameObject> chargrab()
     {
-        Debug.Log("Did is this the issue?");
+       // Debug.Log("Did is this the issue?");
         GameObject[] charArray = GameObject.FindGameObjectsWithTag("Character");
         foreach (GameObject charr in charArray)
         {
             characters.Add(charr);
             allentities.Add(charr);
         }
-        Debug.Log("Did is this the issue?: Enemy");
+       // Debug.Log("Did is this the issue?: Enemy");
         GameObject[] enemiesArray = GameObject.FindGameObjectsWithTag("Enemy");
         foreach(GameObject enemy in enemiesArray)
         {
             enemies.Add(enemy);
             allentities.Add(enemy);
         }
-        Debug.Log("Did is this the issue?: Characters");
+       // Debug.Log("Did is this the issue?: Characters");
         return allentities;
     }
     
@@ -138,17 +138,17 @@ public class TurnOrder : MonoBehaviour
         for (int ii = 0; ii < maxCount; ii++)
         {
             //fastest = 0;
-            Debug.Log(shredlist.Count);
+            //Debug.Log(shredlist.Count);
             foreach (GameObject i in shredlist)
             {
-                Debug.Log(i.name + " " + i.GetComponent<Character>().agility + " " + fastest);
+                //Debug.Log(i.name + " " + i.GetComponent<Character>().agility + " " + fastest);
                 if (i.GetComponent<Character>().agility > fastest)
                 {
-                    Debug.Log("its faster");
+                   // Debug.Log("its faster");
                     fastest = i.GetComponent<Character>().agility;
                     currentfastest = i;
                 }
-                else Debug.Log("not faster")
+               // else Debug.Log("not faster")
 ;
             }
             Order.Enqueue(currentfastest);

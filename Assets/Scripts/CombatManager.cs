@@ -7,6 +7,7 @@ public class CombatManager : MonoBehaviour
 {
     //IF DOING TURN ORDER, PULL FROM GIT HUB TO UPDATE THE SCRIPTS!!!!
     GameObject currentchar;
+    public GameObject combatMenu;
     public bool isAttacking;
     private static CombatManager instance;
     public static CombatManager Instance
@@ -26,6 +27,7 @@ public class CombatManager : MonoBehaviour
     void Start()
     {
         //Should grab and instnatiate the characters in party
+        
     }
 
     // Update is called once per frame
@@ -136,7 +138,7 @@ public class CombatManager : MonoBehaviour
 
         return (int)(((baseDamage + damage25percent)*1.5f));
     }
-
+    //This section of the Manager is meant mainly for UI! - Dono
     //test function for ui selection
     public void HighlightAllEnemies()
     {
@@ -148,7 +150,21 @@ public class CombatManager : MonoBehaviour
         }
         this.isAttacking = true;
     }
-
+    //Disables previous menu and enables a new menu
+    public void SwitchImagineMenu(GameObject newMenu){
+        GameObject oldMenu = GameObject.Find("Main Combat Menu");
+        if(oldMenu == null)
+        {
+            combatMenu.SetActive(true);
+            newMenu.SetActive(false);
+        }
+        else {
+            oldMenu.SetActive(false);
+            newMenu.SetActive(true);
+        }
+        
+        
+    }
     public void EnableObject(GameObject obj)
     {
         obj.SetActive(true);
