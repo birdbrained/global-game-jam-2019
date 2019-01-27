@@ -427,8 +427,13 @@ public class TurnOrder : MonoBehaviour
         int attackvictim = Random.Range(0, counts);
         //CHECK if person is not dead, otherwise choose another player
         Player attackee = livingchars[attackvictim].GetComponent<Player>();
+        Enemy attacker = currentturn.GetComponent<Enemy>();
         //pass quip from here
-        attackee.TakeDamage(currentturn.GetComponent<Character>().attack, currentturn.GetComponent<Enemy>().attackQuip);/*(combat.CalculateDamageAmount(currentturn.GetComponent<Character>().attack, attackee.defense));*/
+        attackee.TakeDamage(attacker.attack, attacker.attackQuip);/*(combat.CalculateDamageAmount(currentturn.GetComponent<Character>().attack, attackee.defense));*/
+        if (attacker.attackPS != null)
+        {
+            attacker.attackPS.Play();
+        }
     }
     public void playerturns()
     {
