@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Scenes/Overworld.unity
     guid: 27a2ea6f1550ff748bc77019702e99f5
+  - enabled: 1
+    path: Assets/_Scenes/Overworld Copy.unity
+    guid: 5c71ff1287966422c8133f77ae7f5dac
   - enabled: 1
     path: Assets/_Scenes/DonoBattleTest.unity
     guid: 0c428b7656b0fd940aafd0806bda0917
